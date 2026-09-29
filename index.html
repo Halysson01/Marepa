@@ -770,6 +770,15 @@ body.chat-open .chat { transform: none; opacity: 1; }
   .chips--gold li { font-size: clamp(10px, .98cqw, 13.5px); padding: .8cqw 1.3cqw; }
 }
 
+/* Very small phones (≤359px): tighter header so the menu button never overflows */
+@media (max-width: 359px) {
+  .header-inner { gap: 4px; }
+  .brand img, .is-scrolled .brand img { height: 36px; }
+  .lang button { min-width: 30px; padding: 0 3px; }
+  .icon-btn { width: 40px; height: 40px; }
+  .header-actions { gap: 0; }
+}
+
 </style>
 
   <!--
