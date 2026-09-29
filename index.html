@@ -518,6 +518,8 @@ form.is-done > *:not(.form-success) { display: none !important; }
 .footer-nav ul, .contact-list, .social-links { display: grid; gap: 2px; }
 .footer-nav a { display: inline-flex; align-items: center; min-height: 40px; text-decoration: none; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
 .footer-nav a:hover { color: var(--gold-light); }
+.contact-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--ivory); text-decoration: none; font-size: 15px; font-weight: 500; letter-spacing: .04em; }
+.contact-link:hover { color: var(--gold-light); text-decoration: underline; text-underline-offset: 4px; }
 .footer-h { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 600; }
 .contact-list li, .social-links li { padding: 4px 0; font-size: 14px; }
 .social-links { margin-top: 16px; }
@@ -778,6 +780,120 @@ body.chat-open .chat { transform: none; opacity: 1; }
   .icon-btn { width: 40px; height: 40px; }
   .header-actions { gap: 0; }
 }
+
+/* =====================================================================
+   PHONES (≤899px): keep the DESKTOP composition, just smaller.
+   Two-column sections stay side by side; images keep the same crops.
+   Only forms and purchase cards stack (they need the width).
+   ===================================================================== */
+@media (max-width: 899px) {
+  :root { --gutter: 16px; }
+  .display { font-size: clamp(24px, 7.4vw, 44px); }
+  .section-head, .section-head--center { margin-bottom: clamp(20px, 5vw, 36px); }
+  .section { padding-block: clamp(36px, 9vw, 64px); }
+  .eyebrow { font-size: 9px; letter-spacing: .18em; gap: 8px; }
+  .lead { font-size: clamp(12px, 3.4vw, 16px); }
+
+  /* Strip: one row like desktop */
+  .strip { padding: 12px 0; }
+  .strip-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 14px; font-size: clamp(8px, 2.05vw, 12px); letter-spacing: .08em; }
+  .strip-list li { white-space: nowrap; }
+  .strip-list li + li::before { content: none; }
+
+  /* Hero: text left, logo right */
+  .hero { padding-block: 28px 32px; }
+  .hero-grid { grid-template-columns: 1.12fr .88fr; gap: 14px; min-height: 0; align-items: center; }
+  .hero .eyebrow { font-size: 7.5px; }
+  .hero-h-small { font-size: clamp(9px, 2.6vw, 16px); margin-top: 6px; }
+  .hero-h-big { font-size: clamp(27px, 8.4vw, 70px); margin-top: 6px; }
+  .hero-tagline { font-size: clamp(12px, 3.6vw, 22px); margin-top: 8px; }
+  .hero-attrs { font-size: clamp(7px, 1.9vw, 11px); letter-spacing: .06em; gap: 2px 8px; margin-top: 10px; }
+  .hero-sub { font-size: clamp(10.5px, 3vw, 16px); margin-top: 10px; }
+  .hero-cta { grid-template-columns: 1fr; gap: 8px; margin-top: 14px; max-width: none; }
+  .hero-cta .btn { min-height: 38px; padding: 0 12px; font-size: 10px; }
+  .hero-serving { font-size: clamp(8px, 2.3vw, 12px); margin-top: 12px; }
+  .hero-visual { width: 100%; max-width: none; margin: 0; }
+
+  /* Split sections (Meet the arepa / Meet Marepa): copy left, image right — same order as desktop */
+  .split { grid-template-columns: 1.1fr .9fr; gap: 14px; align-items: center; }
+  .split--reverse { grid-template-columns: .9fr 1.1fr; }
+  .intro .split-media, .story .split-media { max-width: none; }
+  .split-copy .display { font-size: clamp(19px, 5.6vw, 44px); }
+  .split-copy .lead { margin-top: 10px; font-size: clamp(11px, 3.1vw, 16px); }
+  .callout { margin-top: 12px; padding: 8px 10px; }
+  .callout-title { font-size: clamp(12px, 3.4vw, 20px); margin-bottom: 3px; }
+  .callout p { font-size: clamp(9.5px, 2.6vw, 14px); line-height: 1.4; }
+  .mini-points { gap: 4px 10px; font-size: clamp(7.5px, 2vw, 11px); }
+  .chips { gap: 4px; margin: 12px 0 14px; }
+  .chips li { padding: 5px 8px; font-size: clamp(7px, 1.9vw, 11px); letter-spacing: .08em; }
+  .meet .btn { min-height: 38px; padding: 0 16px; font-size: 10px; }
+  .meet-visual { width: 100%; margin: 0; }
+
+  /* Why: 4 columns like desktop */
+  .pillars { grid-template-columns: repeat(4, 1fr); column-gap: 0; border-top: 0; }
+  .pillars li { padding: 4px 8px 4px 10px; border-bottom: 0; border-left: 1px solid var(--line); }
+  .pillars li:first-child { border-left: 0; padding-left: 0; }
+  .pillar-num { font-size: clamp(22px, 6.6vw, 54px); margin-bottom: 6px; }
+  .pillars h3 { font-size: clamp(7px, 2vw, 14px); letter-spacing: .1em; margin-bottom: 6px; }
+  .pillars p { font-size: clamp(9px, 2.5vw, 17px); line-height: 1.35; }
+
+  /* Preparation: 3 cards in a row */
+  .prep-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .prep-card { padding: 12px 10px; gap: 6px; }
+  .prep-card h3 { font-size: clamp(13px, 4vw, 36px); }
+  .prep-card p { font-size: clamp(9px, 2.5vw, 16px); line-height: 1.35; }
+  .prep-card .ph-token { font-size: 7px; padding: 0 4px; }
+
+  /* Testimonials: 2 cards at a time */
+  .review-carousel { --per: 2; }
+  .review-card { padding: 22px 12px 16px; gap: 12px; }
+  .review-card p { font-size: clamp(12px, 3.3vw, 20px); }
+  .review-name { font-size: 9px; }
+
+  /* Final CTA */
+  .final { padding-block: 44px; }
+  .final-badge { width: 64px; height: 64px; margin-bottom: 16px; }
+  .final .display { font-size: clamp(22px, 7vw, 60px); }
+  .final-cta { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; max-width: none; }
+  .final-cta .btn { min-height: 40px; padding: 0 8px; font-size: 9.5px; letter-spacing: .08em; }
+
+  /* Footer: 3 columns like desktop */
+  .footer-grid { grid-template-columns: 1.2fr 1fr 1.1fr; gap: 12px; }
+  .footer-brand img { width: 56px; height: 56px; }
+  .footer-line { font-size: clamp(13px, 3.8vw, 24px); margin-top: 10px; }
+  .footer-serving { font-size: 9.5px; }
+  .footer-nav a { min-height: 32px; font-size: 9px; letter-spacing: .08em; }
+  .footer-h { font-size: 9px; letter-spacing: .14em; margin-bottom: 8px; }
+  .contact-list .ph-token, .social-links .ph-token { font-size: 7.5px; padding: 0 4px; }
+  .footer-lang { font-size: 10px; margin-top: 8px; }
+  .footer-lang button { min-height: 36px; padding: 0 5px; }
+  .footer-bottom { margin-top: 24px; font-size: 10px; }
+
+  /* Our Story: SAME composition as desktop (photo left, copy right), scaled */
+  .story-grid { position: relative; display: block; aspect-ratio: auto; min-height: 66.7cqw; }
+  .story-media { position: absolute; left: 0; top: 0; height: 100%; width: auto; max-width: none; aspect-ratio: 960 / 860; }
+  .story-media .slot img { object-fit: cover; object-position: left center; }
+  .story-copy { position: relative; margin-left: 60.0775%; width: auto; padding: 5cqw 3cqw 3cqw 0; }
+  .story-copy .eyebrow { font-size: 6.5px; gap: 5px; }
+  .story-copy .display { font-size: max(14px, 4.3cqw); line-height: 1.08; }
+  .story .script { font-size: max(12px, 3.6cqw); margin-top: 2px; }
+  .story-copy .chips { margin-top: 6px; gap: 2px; }
+  .story-copy .chips li { font-size: 6px; padding: 3px 4px; letter-spacing: .04em; }
+
+  /* Wholesale: SAME composition as desktop (copy left over the photo on the right), scaled */
+  .ws-banner { aspect-ratio: auto; min-height: 66.7cqw; }
+  .ws-media { left: auto; right: 0; width: 58.5%; z-index: 0; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
+  .ws-media::after { display: none; }
+  .ws-media .slot img { object-position: left center; }
+  .ws-copy { position: relative; z-index: 1; width: 47cqw; margin-left: 4.65cqw; padding: 9cqw 0 7cqw; }
+  .ws-copy .eyebrow { font-size: 7.5px; }
+  .ws-copy .display { font-size: max(19px, 5.3cqw); line-height: 1.1; }
+  .ws-lead { font-size: max(10.5px, 1.75cqw); margin-top: 8px; max-width: none; }
+  .chips--gold { margin-top: 10px; gap: 3px; }
+  .chips--gold li { font-size: 7px; padding: 4px 6px; letter-spacing: .06em; }
+}
+
+@media (max-width: 899px) { .contact-link { min-height: 32px; font-size: 10.5px; letter-spacing: 0; white-space: nowrap; } }
 
 </style>
 
@@ -1207,7 +1323,7 @@ body.chat-open .chat { transform: none; opacity: 1; }
         <h2 class="footer-h" data-i18n="footer.contact">Contact</h2>
         <ul class="contact-list">
           <li><span class="ph-token">[MAREPA_EMAIL]</span></li>
-          <li><span class="ph-token">[MAREPA_PHONE]</span></li>
+          <li><a class="contact-link" href="tel:+15613125272" data-track="call_click">(561) 312-5272</a></li>
           <li><span class="ph-token">[MAREPA_WHATSAPP]</span></li>
         </ul>
         <div class="footer-lang" role="group" data-i18n-aria="a11y.language" aria-label="Language">
@@ -1649,6 +1765,7 @@ body.chat-open .chat { transform: none; opacity: 1; }
       'chat.escalate': 'I can connect you with the Marepa team.',
       'chat.escalateQ': 'How would you like to continue?',
       'chat.whatsapp': 'WhatsApp',
+      'chat.call': 'Call (561) 312-5272',
       'chat.text': 'Text',
       'chat.email': 'Email',
       'chat.channelSoon': 'This contact option is not available yet. [MAREPA_WHATSAPP] [MAREPA_SMS] [MAREPA_EMAIL]',
@@ -1965,6 +2082,7 @@ body.chat-open .chat { transform: none; opacity: 1; }
       'chat.escalate': 'Puedo conectarte con el equipo de Marepa.',
       'chat.escalateQ': '¿Cómo prefieres continuar?',
       'chat.whatsapp': 'WhatsApp',
+      'chat.call': 'Llamar al (561) 312-5272',
       'chat.text': 'Mensaje de texto',
       'chat.email': 'Email',
       'chat.channelSoon': 'Esta opción de contacto aún no está disponible. [MAREPA_WHATSAPP] [MAREPA_SMS] [MAREPA_EMAIL]',
@@ -2003,7 +2121,7 @@ body.chat-open .chat { transform: none; opacity: 1; }
       whatsapp: null,   // digits only with country code, e.g. '1XXXXXXXXXX'   → [MAREPA_WHATSAPP]
       sms: null,        // e.g. '+1XXXXXXXXXX'                                   → [MAREPA_SMS]
       email: null,      // e.g. 'hello@yourdomain.com'                           → [MAREPA_EMAIL]
-      phone: null       //                                                       → [MAREPA_PHONE]
+      phone: '+15613125272'   // shown in the footer + chat "Call" button (display: (561) 312-5272)
     },
 
     social: { instagram: null, facebook: null },
@@ -2570,6 +2688,7 @@ body.chat-open .chat { transform: none; opacity: 1; }
     if (id === 'whatsapp' && c.whatsapp) return 'https://wa.me/' + String(c.whatsapp).replace(/\D/g, '');
     if (id === 'sms' && c.sms) return 'sms:' + c.sms;
     if (id === 'email' && c.email) return 'mailto:' + c.email;
+    if (id === 'call' && c.phone) return 'tel:' + c.phone;
     return null;
   }
 
@@ -2590,13 +2709,13 @@ body.chat-open .chat { transform: none; opacity: 1; }
 
   function channelButtons() {
     const wrap = document.createElement('div'); wrap.className = 'chat-actions';
-    [['whatsapp', 'chat.whatsapp', 'whatsapp_click'], ['sms', 'chat.text', 'contact_click'], ['email', 'chat.email', 'contact_click']].forEach(function (c) {
+    [['call', 'chat.call', 'call_click'], ['whatsapp', 'chat.whatsapp', 'whatsapp_click'], ['sms', 'chat.text', 'contact_click'], ['email', 'chat.email', 'contact_click']].forEach(function (c) {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'chat-action chat-action--channel'; b.textContent = t(c[1]);
       b.addEventListener('click', function () {
         M.services.track(c[2], { channel: c[0] });
         const url = channelUrl(c[0]);
-        if (url) { window.open(url, '_blank', 'noopener'); }
+        if (url) { if (c[0] === 'call') { window.location.href = url; } else { window.open(url, '_blank', 'noopener'); } }
         else push([{ from: 'bot', key: 'chat.channelSoon' }]); // placeholder contact not configured yet
       });
       wrap.appendChild(b);
